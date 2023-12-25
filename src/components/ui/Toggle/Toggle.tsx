@@ -26,17 +26,7 @@ const ColorSchemeClasses = {
     " border-neutral-400 dark:border-neutral-100 data-active:bg-red-600 data-active:border-red-600 dark:data-active:bg-red-500 dark:data-active:border-red-500 ",
 };
 
-const Toggle = ({
-  defaultSelected,
-  type,
-  label,
-  isError,
-  isLoading,
-  size,
-  color,
-  onClick,
-  ...props
-}: ToggleProps) => {
+const Toggle = ({ defaultSelected, type, label, isError, isLoading, size, color, onClick, ...props }: ToggleProps) => {
   const [active, setActive] = useState<boolean>(Boolean(defaultSelected));
 
   const onToggleClick = () => {
@@ -49,8 +39,7 @@ const Toggle = ({
   const ToggleClassList = useMemo(() => {
     let classList =
       "flex p-[1px] border rounded-full justify-start data-active:justify-end transition-all duration-200 ease-in-out";
-    let knobClassList =
-      "rounded-full bg-neutral-400 dark:bg-neutral-50 data-active:bg-white";
+    let knobClassList = "rounded-full bg-neutral-400 dark:bg-neutral-50 data-active:bg-white";
     if (size === "small") {
       classList = classList.concat(" w-[30px] h-4");
       knobClassList = knobClassList.concat(" w-3 h-3");
@@ -58,9 +47,7 @@ const Toggle = ({
       classList = classList.concat(" w-9 h-5");
       knobClassList = knobClassList.concat(" w-4 h-4");
     }
-    classList = classList.concat(
-      ColorSchemeClasses[isError ? "error" : color ? color : "primary"]
-    );
+    classList = classList.concat(ColorSchemeClasses[isError ? "error" : color ? color : "primary"]);
     return { classList, knobClassList };
   }, [size, color, isError]);
 
@@ -87,9 +74,7 @@ const Toggle = ({
           ></motion.div>
         )}
       </button>
-      {label && (
-        <label className="miyuu-toggle-label text-sm leading-6">{label}</label>
-      )}
+      {label && <label className="miyuu-toggle-label text-sm leading-6">{label}</label>}
     </div>
   );
 };
