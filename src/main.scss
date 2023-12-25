@@ -3,6 +3,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-4xl;
+    @apply leading-[48px];
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-2xl;
+    @apply font-semibold;
+  }
+  h3 {
+    @apply text-lg;
+    @apply leading-6;
+    @apply font-semibold;
+  }
+  h4 {
+    @apply text-sm;
+    @apply leading-6;
+    @apply font-semibold;
+  }
+  h5 {
+    @apply text-xs;
+    @apply font-semibold;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

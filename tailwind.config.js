@@ -117,6 +117,11 @@ export default {
     //     DEFAULT: "rgba(0, 0, 0, 0.2)",
     //   },
     // },
+    extend: {
+      borderRadius: {
+        md: "4px",
+      },
+    },
     data: {
       active: 'active~="true"',
       "button-outlined": "variation~=outlined",

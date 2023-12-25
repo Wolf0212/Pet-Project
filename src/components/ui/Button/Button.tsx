@@ -1,52 +1,57 @@
-import { useContext, useMemo } from "react";
+import { ComponentProps, ReactElement, forwardRef, useContext, useMemo } from "react";
 import { ColorModeContext } from "../../../context/ColorModeContext";
 
-type ButtonProps = {
+interface IButtonProps extends ComponentProps<"button"> {
+  children: ReactElement | string;
   size?: "small" | "medium" | "large";
   color?: "primary" | "secondary" | "success" | "warning" | "error";
   variation?: "outlined" | "ghost" | "filled";
-};
+}
 
+/**
+ * Styling as follow:
+ * - Border (light/dark)
+ * - Text (light/dark)
+ * - Hover (border/background) (light/dark)
+ * - Active (border/background) (light/dark)
+ */
 const ButtonColorSchemeClasses = {
   outlined: {
     primary:
-      "border border-blue-600/50 dark:border-blue-500/50 text-blue-600 dark:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-600/5 hover:bg-blue-500/5 focus:ring-2 ring-blue-600 dark:ring-blue-500",
+      "border border-blue-500/50 dark:border-blue-400/50 text-blue-500 dark:text-blue-400 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-500/5 hover:bg-blue-400/10 active:border-blue-500 dark:active:border-blue-400 active:bg-blue-500/10 dark:active:bg-blue-400/20",
     secondary: {
-      default: "blue-600",
-      "default-dark": "blue-500",
+      default: "blue-500",
+      "default-dark": "blue-400",
       hover: "",
-      focus: "",
+      active: "",
       disabled: "",
     },
     success: {
-      default: "blue-600",
-      "default-dark": "blue-500",
+      default: "blue-500",
+      "default-dark": "blue-400",
       hover: "",
-      focus: "",
+      active: "",
       disabled: "",
     },
     warning: {
-      default: "blue-600",
-      "default-dark": "blue-500",
+      default: "blue-500",
+      "default-dark": "blue-400",
       hover: "",
-      focus: "",
+      active: "",
       disabled: "",
     },
     error: {
-      default: "blue-600",
-      "default-dark": "blue-500",
+      default: "blue-500",
+      "default-dark": "blue-400",
       hover: "",
-      focus: "",
+      active: "",
       disabled: "",
     },
   },
 };
 
-const Button = ({
-  size = "medium",
-  color = "primary",
-  variation = "outlined",
-}: ButtonProps) => {
+const Button = forwardRef<HTMLButtonElement, IButtonProps>((params, ref) => {
+  const { size = "medium", variation = "outlined", color = "primary", children, ...props } = params;
   const { colorMode } = useContext(ColorModeContext);
 
   const ButtonVariationClasses = useMemo(() => {
@@ -87,15 +92,17 @@ const Button = ({
 
   return (
     <button
+      ref={ref}
       className={ButtonClassList}
       data-theme={colorMode}
       data-size={size ?? "medium"}
       data-color={color ?? "primary"}
       data-variation={variation ?? "outlined"}
+      {...props}
     >
-      <span className="label">This is a button</span>
+      {children}
     </button>
   );
-};
+});
 
 export default Button;

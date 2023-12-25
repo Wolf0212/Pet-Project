@@ -5,8 +5,8 @@ const ButtonPage = () => {
   return (
     <RouteWrapper>
       <>
-        <div>Page for button</div>
-        <Button />
+        <h1>Button</h1>
+        <Button>Outlined Button</Button>
       </>
     </RouteWrapper>
   );
