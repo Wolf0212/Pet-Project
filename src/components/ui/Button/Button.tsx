@@ -65,7 +65,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>((params, ref) => {
         classList += "gap-2 px-4 py-[7px] text-sm leading-6 ";
         break;
       case "large":
-        classList += "gap-2 px-6 py-[13px] leading-6 ";
+        classList += "gap-2 px-6 py-[11px] leading-6 ";
         break;
     }
     switch (variation) {

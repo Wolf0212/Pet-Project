@@ -38,7 +38,7 @@ const Sidebar = () => {
     <nav
       className={`sidebar sticky top-0 left-0 h-screen ${
         isCollapsed ? "w-14" : "w-60"
-      } flex flex-col overflow-hidden justify-between bg-slate-200/50 dark:bg-neutral-800/10 whitespace-nowrap transition-all duration-300 ease-in-out`}
+      } flex flex-shrink-0 flex-col overflow-hidden justify-between bg-slate-200/50 dark:bg-neutral-800/10 whitespace-nowrap transition-all duration-300 ease-in-out`}
     >
       <Link to={"/"}>
         <AnimatePresence mode="wait">
